@@ -19,6 +19,12 @@ class Idea
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'ideas')]
+    private $project;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'idea')]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +50,30 @@ class Idea
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): self
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
