@@ -11,10 +11,20 @@ use Doctrine\Persistence\ObjectManager;
 class StatusFixtures extends Fixture implements DependentFixtureInterface
 {
     private const NAMES = [
-        'En cours',
+        'New',
+        'Abadoned',
+        'Work in Progress',
+        'Help Idea',
+        'Help Wanted',
+        'Finished',
     ];
     private const COLOR = [
+        'primary',
+        'danger',
         'warning',
+        'secondary',
+        'info',
+        'success',
     ];
 
     public function load(ObjectManager $manager): void

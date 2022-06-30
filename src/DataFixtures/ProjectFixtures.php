@@ -15,7 +15,7 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         'Co-Voiturage',
     ];
     private const DATE = [
-        '05/09/2022',
+        '06/30/2022',
     ];
     private const FOLLOWERS =
     3;
@@ -35,12 +35,12 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             for ($j = 0; $j < self::FOLLOWERS; $j++) {
                 $project->addCountFollower($this->getReference('user' . $j));
             }
-            for ($j = 0; $j < self::PARTICIPANTS; $j++) {
-                $project->addParticipant($this->getReference('user' . $j));
+            for ($k = 0; $k < self::PARTICIPANTS; $k++) {
+                $project->addParticipant($this->getReference('user' . $k));
             }
             $project->addReport($this->getReference('report0'));
-            for ($j = 0; $j < self::IDEAS; $j++) {
-                $project->addIdea($this->getReference('idea'. $j));
+            for ($l = 0; $l < self::IDEAS; $l++) {
+                $project->addIdea($this->getReference('idea'. $l));
             }
             
         }

@@ -10,13 +10,13 @@ class IdeaFixtures extends Fixture
 {
     private const NAMES = [
         'Travel',
-        'Higher Sky',
+        'Screen Managment',
         'Underground',
     ];
     private const DESCRIPTION = [
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        'Making travel easier and cheaper for businesses so they can co-operate better',
+        'Office setup is put in place by specific selected people',
+        'Having a louge in the underground room might increase efficiency',
     ];
     
     public function load(ObjectManager $manager): void
