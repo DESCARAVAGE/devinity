@@ -21,7 +21,7 @@ class Project
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projectsFollowing')]
     private $countFollowers;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Participants')]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participants')]
     private $participants;
 
     #[ORM\ManyToOne(targetEntity: Status::class, inversedBy: 'projects')]
@@ -90,7 +90,7 @@ class Project
      */
     public function getParticipants(): Collection
     {
-        return $this->Participants;
+        return $this->participants;
     }
 
     public function addParticipant(User $participant): self

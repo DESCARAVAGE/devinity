@@ -1,14 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('dashboard') }}
+{% endblock %}
+
 {% block title %}
 	{{ parent() }}
 	| News
 {% endblock %}
 
-
 {% block body %}
 	<div class="p-3 mb-5">
-		<h2 class="text-primary">My news</h2>
+		<div class="title rounded-pill my-2 float-start">
+			<h2 class="text-white px-3 my-2">My news</h2>
+		</div>
 		<table class="table align-middle">
 			<thead>
 				<tr class="bg-dark text-light">
@@ -37,5 +42,49 @@
 				{% endfor %}
 			</tbody>
 		</table>
+<<<<<<< HEAD
+=======
+		<table class="table align-middle">
+			<thead>
+				<tr class="text-light title rounded-pill my-2">
+					<th>Type : Project</th>
+					<th>Date</th>
+					<th>Name</th>
+					<th>Participants</th>
+					<th>Followers</th>
+					<th>Ideas</th>
+					<td>Reports</td>
+					<th class="text-center">Actions</th>
+					<th class="d-flex justify-content-center">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for project in projects %}
+					<tr>
+						<td></td>
+						<td>{{ project.date|date ('Y-m-d') }}</td>
+						<td class="text-light">{{ project.name }}</td>
+						<td>{#{{ project.participants }}#}</td>
+						<td>{#{{ project.ideas }}#}</td>
+						<td>{#{{ project.countFollowers }}#}</td>
+						<td>{#{{ project.reports }}#}</td>
+						<td>
+							<p class=" badge bg-success align-items-center">{#{{ project.status }}#}</p>
+						</td>
+						<td class="d-flex justify-content-center gap-3">
+							<p class="btn bg-danger align-middle tableDanger rounded-pill my-2 float-start">Unfollow</p>
+							<p class="btn bg-success align-middle tableJoin rounded-pill my-2 float-start">Join</p>
+							<p class="btn bg-info align-middle tableView rounded-pill my-2 float-start">
+								<a class="text-decoration-none" href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a>
+							</p>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="p-3 title rounded-pill my-2 float-start">
+		<h2 class="text-white px-3 my-2">Last activities</h2>
+>>>>>>> 212d12110ae94e50cc036a360115c3f3176d8df8
 	</div>
 {% endblock %}
