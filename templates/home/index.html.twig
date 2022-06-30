@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}
 	{{ parent() }}
 	| Home
@@ -13,15 +12,30 @@
 			<div class="title rounded-pill my-2 float-start">
 				<h3 class="text-white px-3 my-2">My actualities</h3>
 			</div>
-
+		
 		</section>
-		<li class="ms-4 text-white">Nothing curently</li>
+		
+
 		<section alt="Last Actualities">
 			<div class="title rounded-pill my-2 float-start">
 				<h3 class="text-white px-3 my-2">Last actualities</h3>
 			</div>
+			<tbody>
+			{% for project in projects %}
+				<tr>
+					<td>{{ project.name }}</td>
+					<td>{{ project.date ? project.date|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{project.status.name}}</td>
+					
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">Aucun résultat</td>
+				</tr>
+			{% endfor %}
+		</tbody>
 		</section>
-		<li class="ms-4 text-white">Nothing curently</li>
+
 	</div>
 	<div class="row justify-content-center">
 		<h1 class="title rounded-pill d-flex justify-content-center text-white float-start my-2 px-3">This website is in construction by Deviniti team</h1>
