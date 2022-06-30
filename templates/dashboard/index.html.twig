@@ -6,7 +6,7 @@
 
 {% block body %}
 	<main class="dashboard">
-		<div class="p-3 mt-5">
+		<div class="p-3 mt-5 d-flex flex-column align-items-center">
 			<div class="d-flex justify-content-center">
 				<div class="title rounded-pill mt-5">
 					<h2 class="text-white px-3 my-2">My news</h2>
@@ -15,10 +15,10 @@
 			<section class="my-5 w-75">
 				<table class="table align-middle">
 					<thead>
-						<tr class="bg-dark text-light">
+						<tr class="text-light title rounded-pill my-2">
 							<th>Idea</th>
-							<th class="text-center">Name</th>
-							<th>Followers</th>
+							<th>Name</th>
+							<th class="text-center">Followers</th>
 							<th>Participants</th>
 							<th>Status</th>
 						</tr>
@@ -52,13 +52,13 @@
 			<section class="my-5 w-75">
 				<table class="table align-middle">
 					<thead>
-						<tr class="bg-dark text-light">
+						<tr class="text-light title rounded-pill my-2">
 							<th>Project</th>
-							<th>Date</th>
 							<th>Name</th>
-							<th>Participants</th>
-							<th>Followers</th>
-							<th class="d-flex justify-content-center">Status</th>
+							<th>Date</th>
+							<th class="text-center">Followers</th>
+							<th class="text-center">Participants</th>
+							<th class="text-center">Status</th>
 							<th class="text-center">Actions</th>
 						</tr>
 					</thead>
@@ -67,19 +67,15 @@
 						{% for project in app.user.projectsFollowing %}
 							<tr>
 								<td></td>
-								<td class="text-light">{{ project.date|date ('Y-m-d') }}</td>
 								<td class="text-light">{{ project.name }}</td>
-								<td class="text-light">{{ project.participants|length }}</td>
-								<td class="text-light">{{ project.countFollowers|length }}</td>
-								<td>
-									<p class=" badge bg-secondary align-items-center">Help Idea</p>
-								</td>
-								<td class="d-flex justify-content-center text-light">
-									<p class="btn bg-danger align-middle text-light">Unfollow</p>
-									<p class="btn bg-success align-middle text-light">Join</p>
-									<p class="btn bg-info align-middle text-light">
-										<a class="decoration-none" href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a>
-									</p>
+								<td class="text-light">{{ project.date|date ('d-m-Y') }}</td>
+								<td class="text-light text-center">{{ project.countFollowers|length }}</td>
+								<td class="text-light text-center">{{ project.participants|length }}</td>
+								<td class="text-center text-light border ">Help Idea</td>
+								<td class="text-light text-center">
+									<a href="#" class="btn bg-danger tableDanger rounded-pill my-2 text-light">Unfollow</a>
+									<a href="#" class="btn bg-success tableJoin rounded-pill my-2 text-light">Join</a>
+									<a class="btn bg-info tableView rounded-pill my-2 text-light" href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a>
 								</td>
 							</tr>
 						{% endfor %}
