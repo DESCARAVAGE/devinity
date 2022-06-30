@@ -82,7 +82,7 @@
 								<td></td>
 								<td class="text-white">{{ project.name }}</td>
 								<td class="text-white text-center">{{ project.date|date('d-m-Y') }}</td>
-								<td class="text-white text-center">{{ project.status.name }}</td>
+								<td class="text-white text-center">{{ project.status.name ?? 'Work in progress' }}</td>
 								<td class="d-flex justify-content-center gap-3">
 									<p class="btn bg-danger align-middle tableDanger rounded-pill my-2 float-start">Unfollow</p>
 									<p class="btn bg-success align-middle tableJoin rounded-pill my-2 float-start">Join</p>

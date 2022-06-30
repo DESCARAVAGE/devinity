@@ -20,7 +20,7 @@
 							<th>Name</th>
 							<th class="text-center">Followers</th>
 							<th>Participants</th>
-							<th>Status</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,56 +32,50 @@
 								<td>{{ idea.project.name }}</td>
 								<td>{{ idea.user.name }}</td>
 								<td class="d-flex justify-content-center">
-
-									<p class="btn btn-danger align-middle">Unfollow</p>
-									<p class="btn bg-success align-middle">Join</p>
-									<p class="btn bg-info align-middle">
-										<a href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
-									</p>
-
-								</td>
-								<td class="text-light">{{ project.name }}</td>
-								<td>{{ project.countFollowers }}</td>
-								<td>{{ project.participants }}</td>
-								<td class="badge bg-success">{{ project.statut }}</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</section>
-			<section class="my-5 w-75">
-				<table class="table align-middle">
-					<thead>
-						<tr class="text-light title rounded-pill my-2">
-							<th>Project</th>
-							<th>Name</th>
-							<th>Date</th>
-							<th class="text-center">Followers</th>
-							<th class="text-center">Participants</th>
-							<th class="text-center">Status</th>
-							<th class="text-center">Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-
-						{% for project in app.user.projectsFollowing %}
-							<tr>
-								<td></td>
-								<td class="text-light">{{ project.name }}</td>
-								<td class="text-light">{{ project.date|date ('d-m-Y') }}</td>
-								<td class="text-light text-center">{{ project.countFollowers|length }}</td>
-								<td class="text-light text-center">{{ project.participants|length }}</td>
-								<td class="text-center text-light border ">Help Idea</td>
-								<td class="text-light text-center">
 									<a href="#" class="btn bg-danger tableDanger rounded-pill my-2 text-light">Unfollow</a>
 									<a href="#" class="btn bg-success tableJoin rounded-pill my-2 text-light">Join</a>
-									<a class="btn bg-info tableView rounded-pill my-2 text-light" href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a>
+									<a class="btn bg-info tableView rounded-pill my-2 text-light" href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
 								</td>
 							</tr>
-						{% endfor %}
+						</p>
 					</tbody>
-				</table>
-			</div>
-		</section>
-	</main>
-{% endblock %}
+				</td>
+				<td class="text-light">{{ project.name }}</td>
+				<td>{{ project.countFollowers }}</td>
+				<td>{{ project.participants }}</td>
+				<td class="badge bg-success">{{ project.statut }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table></section><section class="my-5 w-75">
+<table class="table align-middle">
+	<thead>
+		<tr class="text-light title rounded-pill my-2">
+			<th>Project</th>
+			<th>Name</th>
+			<th>Date</th>
+			<th class="text-center">Followers</th>
+			<th class="text-center">Participants</th>
+			<th class="text-center">Status</th>
+			<th class="text-center">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		{% for project in app.user.projectsFollowing %}
+			<tr>
+				<td></td>
+				<td class="text-light">{{ project.name }}</td>
+				<td class="text-light">{{ project.date|date ('d-m-Y') }}</td>
+				<td class="text-light text-center">{{ project.countFollowers|length }}</td>
+				<td class="text-light text-center">{{ project.participants|length }}</td>
+				<td class="text-center text-light border ">Help Idea</td>
+				<td class="text-light text-center">
+					<a href="#" class="btn bg-danger tableDanger rounded-pill my-2 text-light">Unfollow</a>
+					<a href="#" class="btn bg-success tableJoin rounded-pill my-2 text-light">Join</a>
+					<a class="btn bg-info tableView rounded-pill my-2 text-light" href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table></div></section></main>{% endblock %}

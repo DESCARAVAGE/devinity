@@ -13,7 +13,8 @@ class SearchProjectType extends AbstractType
     {
         $builder
             ->add('search', SearchType::class, [
-                'label'=> false
+                'label'=> false,
+                'attr' => ['placeholder' => 'I search a specific idea...']
             ])
         ;
     }

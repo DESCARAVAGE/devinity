@@ -16,28 +16,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET', 'POST'])]
-    public function index(ProjectRepository $projectRepository, IdeaRepository $ideaRepository, Request $request): Response
+    public function index(ProjectRepository $projectRepository, Request $request): Response
     {
-
-        $form = $this->createForm(SearchProjectType::class);
-        $form->handleRequest($request);
-
-        $searchProjects = [];
-        if ($form->isSubmitted() && $form->isValid()) {
-            $search = $form->getData()['search'];
-            $searchProjects = $projectRepository->search($search);
-        }
-        
         $lastProjects = $projectRepository->findBy([],['date'=>'DESC'], 5);
         
-
         $mostFollowed = $projectRepository->findMostFollowed();
 
         return $this->renderForm('home/index.html.twig', [
             'lastProjects' => $lastProjects,
-            'searchProjects' => $searchProjects,
             'mostFollowed' => $mostFollowed,
-            'form' => $form
         ]);
     }
 

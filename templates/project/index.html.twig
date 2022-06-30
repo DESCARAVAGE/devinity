@@ -5,11 +5,13 @@
 
 {% block body %}
 	<main class="project-detail mt-5">
-		<div class="d-flex justify-content-center">
-			<h2 class="text-white mt-3">
-				{{ project.name }}
-			</h2>
-		</div>
+		<section class="my-3 d-flex justify-content-center">
+			<div class="title rounded-pill my-2 float-start mt-5">
+				<h2 class="text-white text-center px-3 my-2">
+					{{ project.name }}
+				</h2>
+			</div>
+		</section>
 		<div class="d-flex justify-content-end me-5">
 			<a href="/" class="ms-5 btn btn-primary">
 				<i class="bi bi-arrow-left"></i>Retour à la liste</a>
@@ -24,12 +26,38 @@
 							<tr>
 								<td>{{ participant.name }}</td>
 							</tr>
-				{% else %}
-					<tr>
-						<td colspan="6">Aucun résultat</td>
-					</tr>
-				{% endfor %}
-			</table>
+
+						{% else %}
+							<tr>
+								<td colspan="6">Aucun résultat</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+		<a href="/" class="mt-5 ms-5 mb-3 btn btn-secondary">
+			<i class="bi bi-arrow-left"></i>Add a report</a>
+		<div class="row gap-5 mx-4">
+			<div class="card glass col-lg-8">
+				<div class="card-body d-flex flex-column justify-content">
+
+					<h2 class="card-title text-white border-bottom">Reports</h2>
+					<table>
+						{% for report in project.reports %}
+							<tr>
+								<td>{{ report.name }}</td>
+								<td>{{ report.description }}</td>
+								<td>{{ report.date ? report.date|date('d-m-Y') : '' }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="6">Aucun résultat</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

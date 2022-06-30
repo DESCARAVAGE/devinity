@@ -19,7 +19,6 @@ class Project
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-
     #[ORM\Column(type: 'date')]
     private $date;
 
