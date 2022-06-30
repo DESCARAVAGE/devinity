@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     public function index(ProjectRepository $projectRepository):Response 
     {
         $user = $this->getUser();
-        $lastProjects = $projectRepository->findBy([], ['date' => 'DESC'], 5);
+        $lastProjects = $projectRepository->findBy([], 5);
 
         return $this->render('home/index.html.twig', [
             'lastProjects' => $lastProjects,
@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     #[Route('/user', name: 'user_index', methods:['GET'])]
     public function showUser():Response
     {
-        return $this->render('user/index.html.twig', [
+        return $this->render('dashboard/index.html.twig', [
 
         ]);
     }

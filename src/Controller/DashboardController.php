@@ -12,13 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(IdeaRepository $ideaRepository, ProjectRepository $projectRepository): Response
+    public function index(): Response
     {
-        $ideas = $ideaRepository->findAll();
-        $projects = $projectRepository->findAll();
         return $this->render('dashboard/index.html.twig', [
-            'ideas' => $ideas,
-            'projects' => $projects,
         ]);
     }
 
