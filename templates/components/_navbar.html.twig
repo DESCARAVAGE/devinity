@@ -1,15 +1,42 @@
 {% block stylesheets %}
 	{{ encore_entry_link_tags('navbar') }}
 {% endblock %}
-
-<div class="d-flex justify-content-center mt-3">
-	<nav class="navbar navbar-expand-lg rounded-pill float-start p-0">
-		<div class="container d-flex justify-content-center">
-			<div class="text-center d-flex gap-5">
-				<a class="nav navbar-brand text-white m-0" href="/">Home</a>
-				<a class="nav navbar-brand text-white m-0" href="/dashboard">Dashboard</a>
-				<a class="nav navbar-brand text-white m-0" href="#">Ideas</a>
+<header>
+	<video autoplay muted loop id="myVideo">
+		<source src="{{ asset('build/images/Untitled.mp4')}}" type="video/mp4">
+	</video>
+	<div class="d-flex justify-content-center mt-3">
+		<nav class="navbar navbar-expand-lg rounded-pill float-start p-0">
+			<div class="container d-flex justify-content-center">
+				<div class="text-center d-flex gap-5">
+					<a class="nav navbar-brand text-white m-0" href="/">Home</a>
+					<a class="nav navbar-brand text-white m-0" href="/dashboard">Dashboard</a>
+					<a class="nav navbar-brand text-white m-0" href="#">Ideas</a>
+				</div>
 			</div>
+		</nav>
+
+
+	</div>
+	<a href="#">
+		<div class="svgcont">
+
+			<svg id="argsvg1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 400">
+				<path id="ampoule2" class="cls-1" d="M288.8,188.6c0,42.5-51,86.1-56,118.1h-67c-5-32.1-56-75.7-56-118.1,0-51.3,40.1-92.9,89.5-92.9S288.7,137.3,288.8,188.6Z"/>
+				<path id="reflet2" class="cls-1" d="M225.6,122.4c11.8,3.2,27.4,17.4,31.9,32.2"/>
+				<path id="culot2" class="cls-1" d="M221.3,366.9h-44c-6.3,0-11.4-6-11.4-13.4V306.9h66.9v46.6c0,7.4-5.2,13.4-11.5,13.4h0Z"/>
+				<path id="culot2é" class="cls-1" d="M210,387H188.7a5.46,5.46,0,0,1-5.5-5.4V367h32.4v14.6A5.55,5.55,0,0,1,210,387h0Z"/>
+				<g id="lights2">
+					<path id="path3419-02" class="cls-1 rays2" d="M300.8,258.8l38.1,38.1"/>
+					<path id="path3419-0-22" data-name="path3419-0" class="cls-1 rays2" d="M313.4,189.6h53.9"/>
+					<path id="path3419-0-32" data-name="path3419-0" class="cls-1 rays2" d="M307.4,97l38.1-38.1"/>
+					<path id="path3419-0-42" data-name="path3419-0" class="cls-1 rays2" d="M199.3,66.9V13"/>
+					<path id="path3419-0-52" data-name="path3419-0" class="cls-1 rays2" d="M95.1,94.9L57,56.8"/>
+					<path id="path3419-0-62" data-name="path3419-0" class="cls-1 rays2" d="M86.6,189.6H32.7"/>
+					<path id="path3419-0-72" data-name="path3419-0" class="cls-1 rays2" d="M99.8,258.8L61.7,296.9"/>
+				</g>
+				<line class="cls-1" x1="165.9" y1="334.1" x2="232.8" y2="334.1"/>
+			</svg>
 		</div>
-	</nav>
-</div>
+	</a>
+</header>
