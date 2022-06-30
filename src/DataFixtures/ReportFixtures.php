@@ -16,7 +16,7 @@ class ReportFixtures extends Fixture
         '06/29/2022',
     ];
     private const DESCRIPTION =
-    'Last night we were able to advance in the data services and have completed the display of our product';
+    'Last night we were able to advance in the data services and have completed the display of our product...';
 
     public function load(ObjectManager $manager): void
     {
