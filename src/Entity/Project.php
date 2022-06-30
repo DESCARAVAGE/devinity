@@ -33,11 +33,15 @@ class Project
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Idea::class)]
     private $ideas;
 
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: Report::class)]
+    private $reports;
+
     public function __construct()
     {
         $this->countFollowers = new ArrayCollection();
         $this->Participants = new ArrayCollection();
         $this->ideas = new ArrayCollection();
+        $this->reports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,6 +160,36 @@ class Project
             // set the owning side to null (unless already changed)
             if ($idea->getProject() === $this) {
                 $idea->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Report>
+     */
+    public function getReports(): Collection
+    {
+        return $this->reports;
+    }
+
+    public function addReport(Report $report): self
+    {
+        if (!$this->reports->contains($report)) {
+            $this->reports[] = $report;
+            $report->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReport(Report $report): self
+    {
+        if ($this->reports->removeElement($report)) {
+            // set the owning side to null (unless already changed)
+            if ($report->getProject() === $this) {
+                $report->setProject(null);
             }
         }
 

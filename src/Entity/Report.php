@@ -22,6 +22,9 @@ class Report
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'reports')]
+    private $project;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Report
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): self
+    {
+        $this->project = $project;
 
         return $this;
     }
