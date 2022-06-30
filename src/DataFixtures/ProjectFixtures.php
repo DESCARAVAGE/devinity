@@ -19,6 +19,10 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
     ];
     private const FOLLOWERS =
     3;
+    private const PARTICIPANTS =
+    2;
+    private const IDEAS =
+    3;
 
     public function load(ObjectManager $manager): void
     {
@@ -31,6 +35,14 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             for ($j = 0; $j < self::FOLLOWERS; $j++) {
                 $project->addCountFollower($this->getReference('user' . $j));
             }
+            for ($j = 0; $j < self::PARTICIPANTS; $j++) {
+                $project->addParticipant($this->getReference('user' . $j));
+            }
+            $project->addReport($this->getReference('report0'));
+            for ($j = 0; $j < self::IDEAS; $j++) {
+                $project->addIdea($this->getReference('idea'. $j));
+            }
+            
         }
         $manager->flush();
     }
@@ -39,6 +51,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            ReportFixtures::class,
+            IdeaFixtures::class
         ];
     }
 }
