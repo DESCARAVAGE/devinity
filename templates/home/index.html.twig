@@ -10,38 +10,30 @@
 		class="mt-5">
 
 		{# <section>
-									<div class="d-flex">
-										<div class="search">
-											{{ form_start(form) }}
-											{{ form_widget(form) }}
-											{{ form_end(form) }}
-										</div>
-									</div>
-						
-									<tbody>
-										{% for project in searchProjects %}
-											<tr>
-												<td>{{ project.name }}</td>
-												<td>{{ project.date ? project.date|date('d-m-Y') }}</td>
-												<td>{{project.status.name}}</td>
-						
-											</tr>
-										{% else %}
-											<tr>
-												<td colspan="6">Aucun résultat</td>
-											</tr>
-										{% endfor %}
-									</tbody>
-								</section> #}
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="6">Aucun résultat</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</section>
+			<div class="d-flex">
+				<div class="search">
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					{{ form_end(form) }}
+				</div>
+			</div>
+
+			<tbody>
+				{% for project in searchProjects %}
+					<tr>
+						<td>{{ project.name }}</td>
+						<td>{{ project.date ? project.date|date('d-m-Y') }}</td>
+						<td>{{project.status.name}}</td>
+
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">Aucun résultat</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		{% endif %}
+		</section> #}
 
 
 		<div class="row">
