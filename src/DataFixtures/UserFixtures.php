@@ -37,7 +37,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user = new User();
             $user->setName(self::NAMES[$i]);
             $user->setSector(self::SECTORS[$i]);
-            $user->setRoles(['ROLE_CONTRIBUTOR']);
+            $user->setRoles(['ROLE_USER']);
             $password = 'toto';
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $user,
