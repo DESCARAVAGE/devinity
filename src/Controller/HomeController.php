@@ -15,9 +15,20 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
-        $projects = $projectRepository->findBy([],['date'=>'DESC'],5);
+        $projects = $projectRepository->findBy([], ['date' => 'DESC'], 5);
+        if ($this->getUser()) {
+            /** @var User */
+            $user = $this->getUser();
+            $projectsUser = $user->getParticipants();
+        }
+        else
+        {
+            $projectsUser = [];
+        }
+        
         return $this->render('home/index.html.twig', [
             'projects' => $projects,
+            'projectsUser' => $projectsUser,
         ]);
     }
 

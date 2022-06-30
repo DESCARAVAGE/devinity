@@ -6,34 +6,47 @@
 {% endblock %}
 
 {% block body %}
+	{% if is_granted('ROLE_USER')%}
+		<div class="row">
+			<section alt="My actualities">
+				<div class="title rounded-pill my-2 float-start">
+					<h3 class="text-white px-3 my-2">My actualities</h3>
+				</div>
+				<tbody>
+					{% for projectUser in projectsUser %}
+						<tr>
+							<td>{{ projectUser.name }}</td>
+							<td>{{ projectUser.date ? projectUser.date|date('Y-m-d H:i:s') : '' }}</td>
+							<td>{{projectUser.status.name}}</td>
 
-	<div class="row">
-		<section alt="My actualities">
-			<div class="title rounded-pill my-2 float-start">
-				<h3 class="text-white px-3 my-2">My actualities</h3>
-			</div>
-		
-		</section>
-		
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">Aucun résultat</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</section>
+		{% endif %}
 
 		<section alt="Last Actualities">
 			<div class="title rounded-pill my-2 float-start">
 				<h3 class="text-white px-3 my-2">Last actualities</h3>
 			</div>
 			<tbody>
-			{% for project in projects %}
-				<tr>
-					<td>{{ project.name }}</td>
-					<td>{{ project.date ? project.date|date('Y-m-d H:i:s') : '' }}</td>
-					<td>{{project.status.name}}</td>
-					
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="6">Aucun résultat</td>
-				</tr>
-			{% endfor %}
-		</tbody>
+				{% for project in projects %}
+					<tr>
+						<td>{{ project.name }}</td>
+						<td>{{ project.date ? project.date|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{project.status.name}}</td>
+
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">Aucun résultat</td>
+					</tr>
+				{% endfor %}
+			</tbody>
 		</section>
 
 	</div>
