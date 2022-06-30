@@ -16,3 +16,43 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
+
+.box {
+  height: 200px;
+  width: 200px;
+  transition-duration: 2s;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  margin: -5px;
+}
+
+.box:hover {
+  height: 200px;
+  width: 200px;
+  // background-color: red;
+  // transform: translate(20px);
+  animation: shake 3s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  20% {
+    transform: translate3d(4px, 0, 0);
+  }
+  30%, 50% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(1px, 0, 0);
+  }
+  70% {
+    transform: translate3d(0, 0, 0);
+  }
+}
