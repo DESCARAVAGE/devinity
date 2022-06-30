@@ -39,6 +39,7 @@ class ProjectRepository extends ServiceEntityRepository
         }
     }
 
+
     public function search($query): array
     {
         return $this->createQueryBuilder('p')
@@ -79,6 +80,20 @@ class ProjectRepository extends ServiceEntityRepository
     //        ;
     //    }
 
+    /**
+     * @return Project[] Returns an array of Project objects
+     */
+    public function findByUser($project): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id = :val')
+            ->setParameter('val', $project)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     //    public function findOneBySomeField($value): ?Project
     //    {
     //        return $this->createQueryBuilder('p')
@@ -88,4 +103,5 @@ class ProjectRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
 }

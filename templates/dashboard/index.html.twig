@@ -16,74 +16,75 @@
 		</div>
 		<table class="table align-middle">
 			<thead>
-				<tr class="text-light title rounded-pill my-2">
-					<th>Type : Idea</th>
-					<th>Name</th>
-					<th class="text-center">Description</th>
-					<th>Project</th>
-					<th>User</th>
-					<th class="text-center">Actions</th>
+				<tr class="bg-dark text-light">
+					<th>Type</th>
+					<th class="text-center">Name</th>
+					<th>Followers</th>
+					<th>Participants</th>
+					<th>Statut</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for idea in ideas %}
+
+				{% for idea in app.user.idea %}
 					<tr>
 						<td></td>
 						<td class="text-light">{{ idea.name }}</td>
 						<td class="text-light text-center">{{ idea.description }}</td>
-						<td>{#{{ idea.project }}#}</td>
-						<td>{#{{ idea.user }}#}</td>
-						<td class="d-flex justify-content-center gap-3">
-							<p class="btn bg-danger align-middle tableDanger rounded-pill my-2 float-start">Unfollow</p>
-							<p class="btn bg-success align-middle tableJoin rounded-pill my-2 float-start">Join</p>
-							<p class="btn bg-info align-middle tableView rounded-pill my-2 float-start">
-								<a class="text-decoration-none" href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
+						<td>{{ idea.project.name }}</td>
+						<td>{{ idea.user.name }}</td>
+						<td class="d-flex justify-content-center">
+
+							<p class="btn btn-danger align-middle">Unfollow</p>
+							<p class="btn bg-success align-middle">Join</p>
+							<p class="btn bg-info align-middle">
+								<a href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
 							</p>
+
 						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		<table class="table align-middle">
-			<thead>
-				<tr class="text-light title rounded-pill my-2">
-					<th>Type : Project</th>
-					<th>Date</th>
-					<th>Name</th>
-					<th>Participants</th>
-					<th>Followers</th>
-					<th>Ideas</th>
-					<td>Reports</td>
-					<th class="text-center">Actions</th>
-					<th class="d-flex justify-content-center">Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for project in projects %}
-					<tr>
-						<td></td>
-						<td>{{ project.date|date ('Y-m-d') }}</td>
 						<td class="text-light">{{ project.name }}</td>
-						<td>{#{{ project.participants }}#}</td>
-						<td>{#{{ project.ideas }}#}</td>
-						<td>{#{{ project.countFollowers }}#}</td>
-						<td>{#{{ project.reports }}#}</td>
-						<td>
-							<p class=" badge bg-success align-items-center">{#{{ project.status }}#}</p>
-						</td>
-						<td class="d-flex justify-content-center gap-3">
-							<p class="btn bg-danger align-middle tableDanger rounded-pill my-2 float-start">Unfollow</p>
-							<p class="btn bg-success align-middle tableJoin rounded-pill my-2 float-start">Join</p>
-							<p class="btn bg-info align-middle tableView rounded-pill my-2 float-start">
-								<a class="text-decoration-none" href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a>
-							</p>
-						</td>
+						<td>{{ project.countFollowers }}</td>
+						<td>{{ project.participants }}</td>
+						<td class="badge bg-success">{{ project.statut }}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
-		</table>
-	</div>
-	<div class="p-3 title rounded-pill my-2 float-start">
-		<h2 class="text-white px-3 my-2">Last activities</h2>
-	</div>
-{% endblock %}
+
+			<table class="table align-middle">
+				<thead>
+					<tr class="bg-dark text-light">
+						<th>Project</th>
+						<th>Date</th>
+						<th>Name</th>
+						<th>Participants</th>
+						<th>Followers</th>
+						<th class="d-flex justify-content-center">Status</th>
+						<th class="text-center">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% for project in app.user.projectsFollowing %}
+						<tr>
+							<td></td>
+							<td class="text-light">{{ project.date|date ('Y-m-d') }}</td>
+							<td class="text-light">{{ project.name }}</td>
+							<td class="text-light">{{ project.participants|length }}</td> 
+							<td class="text-light">{{ project.countFollowers|length }}</td>
+							<td>
+								<p class=" badge bg-secondary align-items-center">Help Idea</p>
+							</td>
+							<td class="d-flex justify-content-center text-light">
+								<p class="btn bg-danger align-middle text-light">Unfollow</p>
+								<p class="btn bg-success align-middle text-light">Join</p>
+								<p class="btn bg-info align-middle text-light" ><a class="decoration-none"href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a></p>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="p-3">
+			<h2 class="text-primary">Last activities</h2>
+		{% endblock %}
+

@@ -14,9 +14,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
     private const NAMES = [
         'Co-Voiturage',
     ];
-    private const DATE = [
-        '06/30/2022',
-    ];
     private const FOLLOWERS =
     3;
     private const PARTICIPANTS =
@@ -29,7 +26,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < count(self::NAMES); $i++) {
             $project = new Project();
             $project->setName(self::NAMES[$i]);
-            $project->setDate(new DateTime(self::DATE[$i]));
             $manager->persist($project);
             $this->addReference('project' . $i, $project);
             for ($j = 0; $j < self::FOLLOWERS; $j++) {

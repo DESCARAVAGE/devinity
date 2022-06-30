@@ -12,13 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(IdeaRepository $ideaRepository, ProjectRepository $projectRepository): Response
+    public function index(): Response
     {
-        $ideas = $ideaRepository->findAll();
-        $projects = $projectRepository->findAll();
         return $this->render('dashboard/index.html.twig', [
-            'ideas' => $ideas,
-            'projects' => $projects,
         ]);
     }
 
@@ -28,7 +24,7 @@ class DashboardController extends AbstractController
         $idea = $ideaRepository->findOneById($id);
         return $this->render('dashboard/show_idea.html.twig', [
             'idea' => $idea,
-            'Id' => $id,
+            'id' => $id,
         ]);
     }
 
@@ -39,7 +35,7 @@ class DashboardController extends AbstractController
         $project = $projectRepository->findOneById($id);
         return $this->render('dashboard/show_project.html.twig', [
             'project' => $project,
-            'projectId' => $id,
+            'id' => $id,
         ]);
     }
 }

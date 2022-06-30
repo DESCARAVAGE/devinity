@@ -18,6 +18,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index', methods: ['GET', 'POST'])]
     public function index(ProjectRepository $projectRepository, IdeaRepository $ideaRepository, Request $request): Response
     {
+
         $form = $this->createForm(SearchProjectType::class);
         $form->handleRequest($request);
 
@@ -44,6 +45,8 @@ class HomeController extends AbstractController
     #[Route('/user', name: 'user_index', methods: ['GET'])]
     public function showUser(): Response
     {
-        return $this->render('user/index.html.twig', []);
+        return $this->render('dashboard/index.html.twig', [
+
+        ]);
     }
 }
