@@ -28,7 +28,7 @@ class DashboardController extends AbstractController
         $idea = $ideaRepository->findOneById($id);
         return $this->render('dashboard/showIdea.html.twig', [
             'idea' => $idea,
-            'id' => $id,
+            'ideaId' => $id,
         ]);
     }
 
