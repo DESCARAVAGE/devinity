@@ -22,22 +22,22 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/idea/{id}', methods: ['GET'], name: 'show_idea')]
+    #[Route('/{id}', methods: ['GET'], name: 'show_idea')]
     public function showId(int $id, IdeaRepository $ideaRepository): Response
     {
         $idea = $ideaRepository->findOneById($id);
-        return $this->render('dashboard/showIdea.html.twig', [
+        return $this->render('dashboard/show_idea.html.twig', [
             'idea' => $idea,
-            'ideaId' => $id,
+            'Id' => $id,
         ]);
     }
 
-    #[Route('/project/{id}', methods: ['GET'], name: 'show_project')]
+    #[Route('/{id}', methods: ['GET'], name: 'show_project')]
     public function showProject(int $id, ProjectRepository $projectRepository): Response
     {
         
         $project = $projectRepository->findOneById($id);
-        return $this->render('dashboard/showProject.html.twig', [
+        return $this->render('dashboard/show_project.html.twig', [
             'project' => $project,
             'projectId' => $id,
         ]);
