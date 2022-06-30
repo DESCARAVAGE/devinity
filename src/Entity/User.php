@@ -20,8 +20,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $password = null;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $password;
+
+    #[ORM\Column(type: 'json')]
+    private $roles = [];
 
     #[ORM\Column(type: 'string', length: 255)]
     private $sector;
@@ -30,7 +33,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $projectsFollowing;
 
     #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'Participants')]
-    private $Participants;
+    private $participants;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Idea::class)]
     private $idea;
@@ -38,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->projectsFollowing = new ArrayCollection();
-        $this->Participants = new ArrayCollection();
+        $this->participants = new ArrayCollection();
         $this->idea = new ArrayCollection();
     }
 
@@ -103,13 +106,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getParticipants(): Collection
     {
-        return $this->Participants;
+        return $this->participants;
     }
 
     public function addParticipant(Project $participant): self
     {
-        if (!$this->Participants->contains($participant)) {
-            $this->Participants[] = $participant;
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
         }
 
         return $this;
@@ -117,7 +120,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeParticipant(Project $participant): self
     {
-        $this->Participants->removeElement($participant);
+        $this->participants->removeElement($participant);
 
         return $this;
     }
@@ -152,35 +155,58 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
     /**
-     * @return string the hashed password for this user
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
      */
-    public function getPassword(): ?string
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->name;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function getRoles(): array
+    public function setPassword(string $password): self
     {
-        return [];
+        $this->password = $password;
+
+        return $this;
     }
 
     /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
+     * @see UserInterface
      */
-    public function eraseCredentials() 
+    public function eraseCredentials()
     {
-        return null;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
-    /**
-     * Returns the identifier for this user (e.g. its username or email address).
-     */
-    public function getUserIdentifier(): string 
-    {
-        return '';
-    }
 }
