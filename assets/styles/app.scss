@@ -14,6 +14,10 @@ main {
   padding: 0;
 }
 
+.dashboard section {
+  min-height: 30vh;
+}
+
 .title {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.1);
