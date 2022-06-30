@@ -21,13 +21,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for idea in ideas %}
+				{% for idea in app.user.idea %}
 					<tr>
 						<td></td>
 						<td class="text-light">{{ idea.name }}</td>
 						<td class="text-light text-center">{{ idea.description }}</td>
-						<td>{#{{ idea.project }}#}</td>
-						<td>{#{{ idea.user }}#}</td>
+						<td>{{ idea.project.name }}</td>
+						<td>{{ idea.user.name }}</td>
 						<td class="d-flex justify-content-center">
 
 							<p class="btn btn-danger align-middle">Unfollow</p>
@@ -47,30 +47,26 @@
 						<th>Name</th>
 						<th>Participants</th>
 						<th>Followers</th>
-						<th>Ideas</th>
-						<td>Reports</td>
-						<th class="text-center">Actions</th>
 						<th class="d-flex justify-content-center">Status</th>
+						<th class="text-center">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 
-					{% for project in projects %}
+					{% for project in app.user.projectsFollowing %}
 						<tr>
 							<td></td>
-							<td>{{ project.date|date ('Y-m-d') }}</td>
+							<td class="text-light">{{ project.date|date ('Y-m-d') }}</td>
 							<td class="text-light">{{ project.name }}</td>
-							<td>{#{{ project.participants }}#}</td>
-							<td>{#{{ project.ideas }}#}</td>
-							<td>{#{{ project.countFollowers }}#}</td>
-							<td>{#{{ project.reports }}#}</td>
+							<td class="text-light">{{ project.participants|length }}</td> 
+							<td class="text-light">{{ project.countFollowers|length }}</td>
 							<td>
-								<p class=" badge bg-success align-items-center">{#{{ project.status }}#}</p>
+								<p class=" badge bg-secondary align-items-center">Help Idea</p>
 							</td>
-							<td class="d-flex justify-content-center">
-								<p class="btn bg-danger align-middle">Unfollow</p>
-								<p class="btn bg-success align-middle">Join</p>
-								<p class="btn bg-info align-middle" ><a href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a></p>
+							<td class="d-flex justify-content-center text-light">
+								<p class="btn bg-danger align-middle text-light">Unfollow</p>
+								<p class="btn bg-success align-middle text-light">Join</p>
+								<p class="btn bg-info align-middle text-light" ><a class="decoration-none"href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a></p>
 							</td>
 						</tr>
 					{% endfor %}
