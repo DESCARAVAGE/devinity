@@ -43,7 +43,7 @@ main {
   width: 200px;
   // background-color: red;
   // transform: translate(20px);
-  animation: shake 3s cubic-bezier(.36, .07, .19, .97) both;
+  animation: shake 3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
@@ -56,11 +56,13 @@ main {
   20% {
     transform: translate3d(4px, 0, 0);
   }
-  30%, 50% {
+  30%,
+  50% {
     transform: translate3d(-2px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(1px, 0, 0);
   }
   70% {
@@ -89,8 +91,7 @@ header {
   filter: brightness(80%);
 }
 
-.svgcont
-{
+.svgcont {
   text-align: center;
   height: 100px;
   width: 100px;
@@ -100,16 +101,15 @@ header {
   margin-top: 2rem;
 }
 
-#argsvg1 path, #argsvg1 line
-{
-    stroke-width: 8px;
-    stroke: white;
-    fill: none;
+#argsvg1 path,
+#argsvg1 line {
+  stroke-width: 8px;
+  stroke: white;
+  fill: none;
 }
 
-#argsvg1:hover #ampoule2
-{
-    fill: rgba(246, 227, 123, 0.8);
+#argsvg1:hover #ampoule2 {
+  fill: rgba(246, 227, 123, 0.8);
 }
 
 .table-bottom {
@@ -138,6 +138,19 @@ header {
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
+.new-idea, .ideaz {
+  height: 95vh;
+}
+
+.form-label {
+  color: white;
+}
+
+.ideas td {
+  min-height: 75px;
+}
+
 .project-detail{
   min-height: 80vh;
 }
+

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}| Ideazz
+{% endblock %}
+
+{% block body %}
+	<main class="d-flex flex-column align-items-center mt-5 ideaz">
+		<h1 class="my-5 text-light title rounded-pill px-4">Ideas</h1>
+
+		<section class="w-75">
+			<div class="align-self-start w-50">
+				<div class="search">
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					{{ form_end(form) }}
+				</div>
+			</div>
+
+			<table class="table align-middle table-hover">
+				<thead>
+					<tr class="text-light title rounded-pill my-2">
+						<th class="text-center">Name</th>
+						<th class="">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for idea in ideas %}
+						<tr>
+							<td class="text-light text-center">{{ idea.name }}</td>
+							<td class="text-light description my-2">{{ idea.description }}</td>
+						</tr>
+					</p>
+				</tbody>
+			</td>
+		</tr>
+	{% endfor %}
+</tbody></table></section></main>{% endblock %}
