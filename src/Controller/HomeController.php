@@ -16,11 +16,9 @@ class HomeController extends AbstractController
     {
         $user = $this->getUser();
         $lastProjects = $projectRepository->findBy([], ['date' => 'DESC'], 5);
-        $myProjects = $projectRepository->findBy(['participants' => $user], ['date' => 'DESC'], 5);
 
         return $this->render('home/index.html.twig', [
             'lastProjects' => $lastProjects,
-            'myProjects' => $myProjects,
         ]);
     }
 
