@@ -15,8 +15,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
-        $projects = $projectRepository->findAll();
-        ($projects[0]);
+        $projects = $projectRepository->findBy([],['date'=>'DESC'],5);
         return $this->render('home/index.html.twig', [
             'projects' => $projects,
         ]);
