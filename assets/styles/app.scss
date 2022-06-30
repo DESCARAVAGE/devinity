@@ -17,10 +17,6 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-// .testBubble {
-//   gap: 20px;
-// }
-
 .box {
   height: 200px;
   width: 200px;
@@ -34,7 +30,7 @@ body {
 .box:hover {
   height: 200px;
   width: 200px;
-  background-color: red;
+  // background-color: red;
   // transform: translate(20px);
   animation: shake 3s cubic-bezier(.36, .07, .19, .97) both;
   transform: translate3d(0, 0, 0);
