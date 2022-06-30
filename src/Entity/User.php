@@ -32,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'countFollowers')]
     private $projectsFollowing;
 
-    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'Participants')]
+    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'participants')]
     private $participants;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Idea::class)]
