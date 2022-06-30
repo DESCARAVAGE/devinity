@@ -22,7 +22,7 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', methods: ['GET'], name: 'show_idea')]
+    #[Route('/idea/{id}', methods: ['GET'], name: 'show_idea')]
     public function showId(int $id, IdeaRepository $ideaRepository): Response
     {
         $idea = $ideaRepository->findOneById($id);
@@ -32,14 +32,14 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', methods: ['GET'], name: 'show_project')]
+    #[Route('/project/{id}', methods: ['GET'], name: 'show_project')]
     public function showProject(int $id, ProjectRepository $projectRepository): Response
     {
         
-        $project = $projectRepository->findOneByID($id);
+        $project = $projectRepository->findOneById($id);
         return $this->render('dashboard/showProject.html.twig', [
             'project' => $project,
-            'id' => $id,
+            'projectId' => $id,
         ]);
     }
 }

@@ -14,30 +14,30 @@
 				<tr class="bg-dark text-light">
 					<th>Idea</th>
 					<th>Name</th>
-					<th>Description</th>
+					<th class="text-center">Description</th>
 					<th>Project</th>
 					<th>User</th>
-					<th class="d-flex justify-content-center">Status</th>
-					<th>Actions</th>
+					<th class="text-center">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				{#{% for idea in ideas %}#}
+				{% for idea in ideas %}
 					<tr>
-						<td class="text-warning">{#{{ idea.name }}#}</td>
-						<td>{#{{ idea.description }}#}</td>
+						<td></td>
+						<td class="text-light">{{ idea.name }}</td>
+						<td class="text-light text-center">{{ idea.description }}</td>
 						<td>{#{{ idea.project }}#}</td>
 						<td>{#{{ idea.user }}#}</td>
-						<td>
+						<td class="d-flex justify-content-center">
 
-							<p class="btn bg-danger align-middle">Unfollow</p>
+							<p class="btn btn-danger align-middle">Unfollow</p>
 							<p class="btn bg-success align-middle">Join</p>
 							<p class="btn bg-info align-middle">
-								<a href="{#{{ path('dashboard_show_idea', {id: idea.id}) }}#}">View</a>
+								<a href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
 							</p>
 						</td>
 					</tr>
-				{#{% endfor %}#}
+				{% endfor %}
 			</tbody>
 			<table class="table align-middle">
 				<thead>
@@ -49,33 +49,34 @@
 						<th>Followers</th>
 						<th>Ideas</th>
 						<td>Reports</td>
+						<th class="text-center">Actions</th>
 						<th class="d-flex justify-content-center">Status</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
-				{# <tbody>
+				<tbody>
 
 					{% for project in projects %}
 						<tr>
-							<td>{{ project.date }}</td>
-							<td>{{ project.name }}</td>
-							<td>{{ project.participants }}</td>
-							<td>{{ project.ideas }}</td>
-							<td>{{ project.countFollowers }}</td>
-							<td>{{ project.reports }}</td>
+							<td></td>
+							<td>{{ project.date|date ('Y-m-d') }}</td>
+							<td class="text-light">{{ project.name }}</td>
+							<td>{#{{ project.participants }}#}</td>
+							<td>{#{{ project.ideas }}#}</td>
+							<td>{#{{ project.countFollowers }}#}</td>
+							<td>{#{{ project.reports }}#}</td>
 							<td>
-								<p class=" badge bg-success align-items-center">{{ project.status }}</p>
+								<p class=" badge bg-success align-items-center">{#{{ project.status }}#}</p>
 							</td>
-							<td>
+							<td class="d-flex justify-content-center">
 								<p class="btn bg-danger align-middle">Unfollow</p>
 								<p class="btn bg-success align-middle">Join</p>
-								<p class="btn bg-info align-middle" href={#{{ path('dashboard_show_project', {id: project.id}) }}>View</p>
+								<p class="btn bg-info align-middle" ><a href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a></p>
 							</td>
 						</tr>
 					{% endfor %}
-				</tbody> #}
+				</tbody>
 			</table>
 		</div>
 		<div class="p-3">
 			<h2 class="text-primary">Last activities</h2>
-	{% endblock %}
+		{% endblock %}
