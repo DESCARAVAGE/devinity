@@ -1,7 +1,7 @@
 @import "variables.scss";
 @import "~bootstrap/scss/bootstrap";
 
-body {
+main {
   background: rgb(11, 34, 56);
   background: linear-gradient(
     100deg,
@@ -10,11 +10,18 @@ body {
     rgba(22, 70, 119, 1) 59%,
     rgba(31, 126, 225, 1) 100%
   );
+  margin: 0;
+  padding: 0;
 }
 
 .title {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.432);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .box {
@@ -55,4 +62,74 @@ body {
   70% {
     transform: translate3d(0, 0, 0);
   }
+}
+header {
+  height: 15vh;
+  margin: 0;
+  padding-top: 5vh;
+}
+
+#myVideo {
+  z-index: -5;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  object-fit: cover;
+  opacity: 0.8;
+  filter: contrast(120%);
+  filter: opacity(50%);
+  filter: brightness(80%);
+}
+
+.svgcont
+{
+  text-align: center;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  left: 70vw;
+  top: -2px;
+  margin-top: 2rem;
+}
+
+#argsvg1 path, #argsvg1 line
+{
+    stroke-width: 8px;
+    stroke: white;
+    fill: none;
+}
+
+#argsvg1:hover #ampoule2
+{
+    fill: rgba(246, 227, 123, 0.8);
+}
+
+.table-bottom {
+  min-height: 1000px;
+  margin: 0;
+  padding: 0;
+}
+
+.tableG {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableDanger {
+  background: rgba(255, 166, 166, 0.947);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableJoin {
+  background: rgba(211, 255, 216, 0.82);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableView {
+  background: rgba(172, 255, 251, 0.622);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }

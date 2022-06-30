@@ -39,6 +39,47 @@ class ProjectRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function search($query): array
+    {
+        return $this->createQueryBuilder('p')
+            ->innerjoin('p.ideas', 'i')
+            ->andWhere('p.name LIKE :q')
+            ->orWhere('i.name LIKE :q')
+            ->setParameter('q', '%' . $query . '%')
+            ->orderBy('p.date', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findMostFollowed(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(f) AS HIDDEN followers', 'p')
+            ->leftJoin('p.countFollowers', 'f')
+            ->orderBy('followers', 'DESC')
+            ->groupBy('p')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    /**
+    //     * @return Project[] Returns an array of Project objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('p.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
     /**
      * @return Project[] Returns an array of Project objects
      */
@@ -52,6 +93,7 @@ class ProjectRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
     //    public function findOneBySomeField($value): ?Project
     //    {
     //        return $this->createQueryBuilder('p')
@@ -61,5 +103,5 @@ class ProjectRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-    //            ->setMaxResults(10)
+
 }
