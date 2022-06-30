@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\IdeaRepository;
+use App\Repository\ProjectRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -10,10 +12,34 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(IdeaRepository $ideaRepository, ProjectRepository $projectRepository): Response
     {
+        $ideas = $ideaRepository->findAll();
+        $projects = $projectRepository->findAll();
         return $this->render('dashboard/index.html.twig', [
+            'ideas' => $ideas,
+            'projects' => $projects,
+        ]);
+    }
 
+    #[Route('/{id}', methods: ['GET'], name: 'show_idea')]
+    public function showId(int $id, IdeaRepository $ideaRepository): Response
+    {
+        $idea = $ideaRepository->findOneById($id);
+        return $this->render('dashboard/showIdea.html.twig', [
+            'idea' => $idea,
+            'id' => $id,
+        ]);
+    }
+
+    #[Route('/{id}', methods: ['GET'], name: 'show_project')]
+    public function showProject(int $id, ProjectRepository $projectRepository): Response
+    {
+        
+        $project = $projectRepository->findOneByID($id);
+        return $this->render('dashboard/showProject.html.twig', [
+            'project' => $project,
+            'id' => $id,
         ]);
     }
 }
