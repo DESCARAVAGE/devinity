@@ -1,26 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('dashboard') }}
+{% endblock %}
+
 {% block title %}
 	{{ parent() }}
 	| News
 {% endblock %}
 
-
 {% block body %}
 	<div class="p-3 mb-5">
-		<h2 class="text-primary">My news</h2>
+		<div class="title rounded-pill my-2 float-start">
+			<h2 class="text-white px-3 my-2">My news</h2>
+		</div>
 		<table class="table align-middle">
 			<thead>
 				<tr class="bg-dark text-light">
-					<th>Idea</th>
-					<th>Name</th>
-					<th class="text-center">Description</th>
-					<th>Project</th>
-					<th>User</th>
-					<th class="text-center">Actions</th>
+					<th>Type</th>
+					<th class="text-center">Name</th>
+					<th>Followers</th>
+					<th>Participants</th>
+					<th>Statut</th>
 				</tr>
 			</thead>
 			<tbody>
+
 				{% for idea in app.user.idea %}
 					<tr>
 						<td></td>
@@ -35,10 +40,16 @@
 							<p class="btn bg-info align-middle">
 								<a href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
 							</p>
+
 						</td>
+						<td class="text-light">{{ project.name }}</td>
+						<td>{{ project.countFollowers }}</td>
+						<td>{{ project.participants }}</td>
+						<td class="badge bg-success">{{ project.statut }}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
+
 			<table class="table align-middle">
 				<thead>
 					<tr class="bg-dark text-light">
@@ -76,3 +87,4 @@
 		<div class="p-3">
 			<h2 class="text-primary">Last activities</h2>
 		{% endblock %}
+

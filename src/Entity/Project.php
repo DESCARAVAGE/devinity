@@ -18,9 +18,6 @@ class Project
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'date')]
-    private $date;
-
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projectsFollowing')]
     private $countFollowers;
 
@@ -35,6 +32,9 @@ class Project
 
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Report::class)]
     private $reports;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isProject = false;
 
     public function __construct()
     {
@@ -57,18 +57,6 @@ class Project
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
 
         return $this;
     }
@@ -192,6 +180,18 @@ class Project
                 $report->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsProject(): ?bool
+    {
+        return $this->isProject;
+    }
+
+    public function setIsProject(bool $isProject): self
+    {
+        $this->isProject = $isProject;
 
         return $this;
     }

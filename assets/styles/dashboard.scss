@@ -1,1 +1,26 @@
 @import "variables.scss";
+
+.title {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableG {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableDanger {
+  background: rgba(255, 166, 166, 0.947);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableJoin {
+  background: rgba(211, 255, 216, 0.82);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableView {
+  background: rgba(172, 255, 251, 0.622);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
