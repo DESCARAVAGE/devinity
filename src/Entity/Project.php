@@ -25,9 +25,9 @@ class Project
     private $countFollowers;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Participants')]
-    private $Participants;
+    private $participants;
 
-    #[ORM\ManyToOne(targetEntity: status::class, inversedBy: 'projects')]
+    #[ORM\ManyToOne(targetEntity: Status::class, inversedBy: 'projects')]
     private $status;
 
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Idea::class)]
@@ -39,7 +39,7 @@ class Project
     public function __construct()
     {
         $this->countFollowers = new ArrayCollection();
-        $this->Participants = new ArrayCollection();
+        $this->participants = new ArrayCollection();
         $this->ideas = new ArrayCollection();
         $this->reports = new ArrayCollection();
     }
@@ -107,8 +107,8 @@ class Project
 
     public function addParticipant(User $participant): self
     {
-        if (!$this->Participants->contains($participant)) {
-            $this->Participants[] = $participant;
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
             $participant->addParticipant($this);
         }
 
@@ -117,7 +117,7 @@ class Project
 
     public function removeParticipant(User $participant): self
     {
-        if ($this->Participants->removeElement($participant)) {
+        if ($this->participants->removeElement($participant)) {
             $participant->removeParticipant($this);
         }
 
