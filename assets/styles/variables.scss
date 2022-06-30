@@ -1,20 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Ubuntu:wght@300;400;500;700&display=swap');
 
-:root {
-    --primary: #712073;
-    --secondary: #bf067e;
-    --light: #FFFFFF;
-    --intermediate: #F222A9;
-    --tertiaire: #D96690;
-    --dark: #181b17;
-  
-    
-    --section-background: #fff7eb;
-    --section-background-alternate: #181b17;
 
-    --title-font: "Comfortaa", cursive;
-    --title-size: 1.6rem;
-    --text-font: "Ubuntu", sans-serif;
-    --text-size: 1.2rem;
-    --line-height: 1.5;
-}
+$primary: #712073;
+$secondary: #bf067e;
+$light: #FFFFFF;
+$intermediate: #F222A9;
+$tertiaire: #D96690;
+$dark: #181b17;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "dark": $dark,
+    "light": $light,
+);
+
+// --section-background: #fff7eb;
+// --section-background-alternate: #181b17;
+
+$title-font: "Comfortaa", cursive;
+$title-size: 1.6rem;
+$text-font: "Ubuntu", sans-serif;
+$text-size: 1.2rem;
+$line-height: 1.5;
+

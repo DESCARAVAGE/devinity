@@ -2,15 +2,17 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background: rgb(113, 32, 115);
+  background: rgb(11, 34, 56);
   background: linear-gradient(
-    90deg,
-    rgba(113, 32, 115, 1) 0%,
-    rgba(191, 6, 126, 1) 100%
+    100deg,
+    rgba(11, 34, 56, 1) 0%,
+    rgba(15, 42, 70, 1) 33%,
+    rgba(22, 70, 119, 1) 59%,
+    rgba(31, 126, 225, 1) 100%
   );
 }
 
-.title {
+.title .glass {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
