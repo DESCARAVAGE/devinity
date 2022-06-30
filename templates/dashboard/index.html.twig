@@ -25,14 +25,22 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for project in app.user.projects %}
-					<tr href="{{ path('dashboard_show_project', {id: project.id}) }}">
-						<td>
-							{% if project.isProject %}
-								Project
-							{% else %}
-								Idea
-							{% endif %}
+
+				{% for idea in app.user.idea %}
+					<tr>
+						<td></td>
+						<td class="text-light">{{ idea.name }}</td>
+						<td class="text-light text-center">{{ idea.description }}</td>
+						<td>{{ idea.project.name }}</td>
+						<td>{{ idea.user.name }}</td>
+						<td class="d-flex justify-content-center">
+
+							<p class="btn btn-danger align-middle">Unfollow</p>
+							<p class="btn bg-success align-middle">Join</p>
+							<p class="btn bg-info align-middle">
+								<a href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
+							</p>
+
 						</td>
 						<td class="text-light">{{ project.name }}</td>
 						<td>{{ project.countFollowers }}</td>
@@ -41,6 +49,42 @@
 					</tr>
 				{% endfor %}
 			</tbody>
-		</table>
-	</div>
-{% endblock %}
+
+			<table class="table align-middle">
+				<thead>
+					<tr class="bg-dark text-light">
+						<th>Project</th>
+						<th>Date</th>
+						<th>Name</th>
+						<th>Participants</th>
+						<th>Followers</th>
+						<th class="d-flex justify-content-center">Status</th>
+						<th class="text-center">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% for project in app.user.projectsFollowing %}
+						<tr>
+							<td></td>
+							<td class="text-light">{{ project.date|date ('Y-m-d') }}</td>
+							<td class="text-light">{{ project.name }}</td>
+							<td class="text-light">{{ project.participants|length }}</td> 
+							<td class="text-light">{{ project.countFollowers|length }}</td>
+							<td>
+								<p class=" badge bg-secondary align-items-center">Help Idea</p>
+							</td>
+							<td class="d-flex justify-content-center text-light">
+								<p class="btn bg-danger align-middle text-light">Unfollow</p>
+								<p class="btn bg-success align-middle text-light">Join</p>
+								<p class="btn bg-info align-middle text-light" ><a class="decoration-none"href="{{ path('dashboard_show_project', {id: project.id}) }}">View</a></p>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="p-3">
+			<h2 class="text-primary">Last activities</h2>
+		{% endblock %}
+
