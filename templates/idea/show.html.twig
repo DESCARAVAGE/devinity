@@ -30,6 +30,12 @@
 						</div>
 					</div>
 				</div>
+			{% endfor %}
+			<div class="box d-flex justify-content-center align-items-center">
+				<a href="{{path('app_idea_new', {id: project.id})}}" class="text-white text-center fs-3 text-decoration-none">Another idea</a>
+			</div>
+		</section>
+
 
 
 			{% endfor %}
