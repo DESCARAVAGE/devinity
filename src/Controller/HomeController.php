@@ -32,8 +32,7 @@ class HomeController extends AbstractController
     #[Route('/user', name: 'user_index', methods: ['GET'])]
     public function showUser(): Response
     {
-        return $this->render('dashboard/index.html.twig', [
+        return $this->render('dashboard/index.html.twig');
 
-        ]);
     }
 }

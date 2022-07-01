@@ -17,4 +17,12 @@ class ProjectController extends AbstractController
             'project' => $project,
         ]);
     }
+    #[Route('/ideas', name: 'show_ideas', methods: ['GET'])]
+    public function showIdeas(Project $project): Response
+    {
+        return $this->render('idea/show.html.twig', [
+            'project' => $project,
+            'ideas' => $project->getIdeas()
+        ]);
+    }
 }

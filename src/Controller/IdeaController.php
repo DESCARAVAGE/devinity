@@ -41,6 +41,7 @@ class IdeaController extends AbstractController
     {
         $user = $this->getUser();
         $idea = new Idea();
+        $idea->setUser($user);
         $form = $this->createForm(IdeaType::class, $idea);
         $form->handleRequest($request);
 
