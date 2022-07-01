@@ -6,7 +6,9 @@
 {% block body %}
 	<main class="ideaz d-flex flex-column align-items-center mt-5">
 		<h1 class="text-white my-4">{{ project.name }}</h1>
-
+		<div class="d-flex justify-content-end w-75">
+	<a href="{{ path('project_show',{id: project.id} )}}" class="btn title rounded-pill my-2">Project</a>
+	</div>
 		<section class="testBubble row align-items-center mt-5 justify-content-center">
 			{% for idea in ideas %}
 			<div class="box d-flex justify-content-center align-items-center">
