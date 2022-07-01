@@ -10,21 +10,28 @@
 		<section class="testBubble row align-items-center mt-5 justify-content-center">
 			{% for idea in ideas %}
 			<div class="box d-flex justify-content-center align-items-center">
-				<h3 class="text-white text-center">{{ idea.name }}</h3>
+				<a type="button" data-bs-toggle="modal" data-bs-target="#{{ idea.name }}">
+					<h3 class="text-white text-center">{{ idea.name }}</h3>
+				</a>
 			</div>
+			<div class="modal fade" id="{{ idea.name }}" tabindex="-1" aria-labelledby="{{ idea.name }}Label" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="{{ idea.name }}Label">{{ idea.name }}</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								{{ idea.description }}
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 			{% endfor %}
-			<div class="box d-flex justify-content-center align-items-center">
-				<h3 class="text-white text-center">Another idea</h3>
-			</div>
-			<div class="box d-flex justify-content-center align-items-center">
-				<h3 class="text-white text-center">Complement idea</h3>
-			</div>
-			<div class="box d-flex justify-content-center align-items-center">
-				<h3 class="text-white text-center">Something special for the project</h3>
-			</div>
-		</section>
-
-
-
 	</main>
 {% endblock %}
