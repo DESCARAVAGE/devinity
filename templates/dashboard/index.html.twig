@@ -9,7 +9,7 @@
 		<div class="p-3 mt-5 d-flex flex-column align-items-center">
 			<div class="d-flex justify-content-center">
 				<div class="title rounded-pill mt-5">
-					<h2 class="text-white px-3 my-2">My news</h2>
+					<h2 class="text-white px-4 my-2">My bubbles</h2>
 				</div>
 			</div>
 			<section class="my-5 w-75">
@@ -19,19 +19,20 @@
 							<th>Idea</th>
 							<th>Name</th>
 							<th class="text-center">Followers</th>
-							<th>Participants</th>
-							<th>Actions</th>
+							<th class="text-center">Participants</th>
+							<th class="text-center">Status</th>
+							<th class="text-center">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
-						{% for idea in app.user.idea %}
+						{% for idea in myIdeas %}
 							<tr>
 								<td></td>
 								<td class="text-light">{{ idea.name }}</td>
-								<td class="text-light text-center">{{ idea.description }}</td>
-								<td>{{ idea.project.name }}</td>
-								<td>{{ idea.user.name }}</td>
-								<td class="d-flex justify-content-center">
+								<td class="text-light text-center">{{ idea.project.countFollowing ?? idea.id + 5}}</td>
+								<td class="text-light text-center">{{ idea.project.participants ?? idea.id  }}</td>
+								<td class="text-center text-light border ">Work in progress</td>
+								<td class="text-center">
 									<a href="#" class="btn bg-danger tableDanger rounded-pill my-2 text-light">Unfollow</a>
 									<a href="#" class="btn bg-success tableJoin rounded-pill my-2 text-light">Join</a>
 									<a class="btn bg-info tableView rounded-pill my-2 text-light" href="{{ path('dashboard_show_idea', {id: idea.id}) }}">View</a>
@@ -40,10 +41,6 @@
 						</p>
 					</tbody>
 				</td>
-				<td class="text-light">{{ project.name }}</td>
-				<td>{{ project.countFollowers }}</td>
-				<td>{{ project.participants }}</td>
-				<td class="badge bg-success">{{ project.statut }}</td>
 			</tr>
 		{% endfor %}
 	</tbody>
