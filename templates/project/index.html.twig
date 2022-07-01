@@ -12,13 +12,10 @@
 				</h2>
 			</div>
 		</section>
-		<div class="d-flex justify-content-end me-5">
-			<a href="/" class="ms-5 btn btn-primary">
-				<i class="bi bi-arrow-left"></i>Change status</a>
-				<a href="/" class="ms-2 btn btn-primary">
-				<i class="bi bi-arrow-left"></i>Return to the idea</a>
-				<a href="/" class="ms-2 btn btn-secondary">
-				<i class="bi bi-arrow-left"></i>Cancel Project</a>
+		<div class="d-flex justify-content-end me-5 text-dark">
+			<a href="/" class="btn bg-info tableView rounded-pill my-2 text-dark ms-2 ">Change status</a>
+			<a href="/" class="btn bg-success tableJoin rounded-pill my-2 text-dark ms-2">Return to the idea</a>
+			<a href="/" class="btn bg-danger tableDanger rounded-pill my-2 text-dark ms-2">Cancel Project</a>
 		</div>
 		<div class="row gap-5 mx-4">
 			<div class="card glass col-lg-4">
@@ -39,8 +36,7 @@
 			</div>
 		</div>
 
-		<a href="{{ path('app_report_new', {'id': project.id}) }}" class="mt-5 ms-5 mb-3 btn btn-secondary">
-			<i class="bi bi-arrow-left"></i>Add a report</a>
+		<a href="{{ path('app_report_new', {'id': project.id}) }}" class="btn bg-success tableJoin rounded-pill text-dark ms-5 my-3 ">Add a report</a>
 		<div class="row gap-5 mx-4">
 			<div class="card glass col-lg-8">
 				<div class="card-body d-flex flex-column justify-content">
