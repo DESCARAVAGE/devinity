@@ -8,6 +8,7 @@ use App\Entity\Project;
 use App\Form\SearchProjectType;
 use App\Repository\IdeaRepository;
 use App\Repository\ProjectRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,23 +37,24 @@ class IdeaController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_idea_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, IdeaRepository $ideaRepository, ProjectRepository $projectRepository): Response
+    #[Route('/{id}/new', name: 'app_idea_new', methods: ['GET', 'POST'])]
+    public function new(Project $project, Request $request, IdeaRepository $ideaRepository, EntityManagerInterface $manager,): Response
     {
         $user = $this->getUser();
+
         $idea = new Idea();
+        $idea->setUser($user);
         $form = $this->createForm(IdeaType::class, $idea);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ideaRepository->add($idea, true);
+            
+            $project->addIdea($idea);
+            $manager->persist(($project));
+            $manager->flush();
 
-            $project = new Project();
-            $project->setName($idea->getName());
-            $project->addParticipant($user);
-            $projectRepository->add($project, true);
-
-            return $this->redirectToRoute('dashboard_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('project_show_ideas', ['id' => $project->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('idea/new.html.twig', [

@@ -2,13 +2,21 @@
 @import "~bootstrap/scss/bootstrap";
 
 main {
-  background: rgb(11, 34, 56);
+  // background: rgb(11, 34, 56);
+  // background: linear-gradient(
+  //   100deg,
+  //   rgba(11, 34, 56, 1) 0%,
+  //   rgba(15, 42, 70, 1) 33%,
+  //   rgba(22, 70, 119, 1) 59%,
+  //   rgba(31, 126, 225, 1) 100%
+  // );
+  background: rgb(89, 89, 89);
   background: linear-gradient(
     100deg,
-    rgba(11, 34, 56, 1) 0%,
-    rgba(15, 42, 70, 1) 33%,
-    rgba(22, 70, 119, 1) 59%,
-    rgba(31, 126, 225, 1) 100%
+    rgba(89, 89, 89, 1) 0%,
+    rgba(122, 151, 158, 1) 26%,
+    rgba(96, 160, 175, 1) 54%,
+    rgba(101, 226, 255, 1) 100%
   );
   margin: 0;
   padding: 0;
@@ -138,7 +146,8 @@ header {
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.new-idea, .ideaz {
+.new-idea,
+.ideaz {
   height: 95vh;
 }
 
@@ -150,7 +159,11 @@ header {
   min-height: 75px;
 }
 
-.project-detail{
+.project-detail {
   min-height: 80vh;
 }
 
+.row {
+  padding-right: 0;
+  padding-left: 0;
+}

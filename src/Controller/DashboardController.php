@@ -12,9 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(IdeaRepository $ideaRepository): Response
     {
+        $myIdeas = $ideaRepository->findBy(['user'=> $this->getUser()], ['id' => 'DESC']);
         return $this->render('dashboard/index.html.twig', [
+            'myIdeas' => $myIdeas
         ]);
     }
 
